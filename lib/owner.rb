@@ -42,3 +42,51 @@ class Owner
   def buy_dog
     @@pets[:dogs] << Dog.new(dog)
   end
+
+  def walk_dogs
+    @@pets[:dogs].each do |dog|
+      dog.mood = 'happy'
+    end
+  end
+
+  def play_with_cats
+    @@pets[:cats].each do |cat|
+      cat.mood = 'nervous'
+    end
+  end
+
+  def feed_fish
+    @@pets[:fishes].each do |fish|
+      fish.mood = 'happy'
+    end
+  end
+
+  def list_pets
+    "I have #{pets[:fishes].length} fish, #{pets[:dogs].length}
+    dog(s), and #{pets[:cats].length} cats(s)."
+  end
+
+  def sell_pets
+    pets.each do |pet, arr|
+      arr.map do |pet|
+        pet.mood = 'nervous'
+      end
+      arr.clear
+    end
+  end
+
+end
+
+human = Owner.new("human")
+human2 = Owner.new("human2")
+
+Owner.all
+
+human.buy_fish("bubbles")
+human.buy_fish("flounder")
+human.buy_cat("fluffy")
+human.buy_cat("whiskers")
+human.buy_dog("fido")
+human.buyu_dog("maestro")
+
+human.list_pets
